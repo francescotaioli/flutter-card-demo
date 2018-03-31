@@ -56,7 +56,7 @@ class GithubCardItem extends StatelessWidget {
                   Icons.star,
                   color: Colors.red[500],
                   ),
-                  new Text('41'),
+                  new Text(star.toString()),
               ]),
 
               ],
