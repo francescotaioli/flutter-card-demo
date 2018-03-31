@@ -6,3 +6,7 @@ You will see:
 - principle of flutter framework 
 - flutter ui components and rules
 - programattically creation of components ( in this case cards )
+
+
+![alt text](
+https://imgur.com/a/zgFQb)
