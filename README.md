@@ -8,5 +8,4 @@ You will see:
 - programattically creation of components ( in this case cards )
 
 
-![alt text](
-https://imgur.com/a/zgFQb)
+![alt text](https://imgur.com/a/zgFQb)
