@@ -8,4 +8,4 @@ You will see:
 - programattically creation of components ( in this case cards )
 
 
-![demo](demo.jpg)
+![demo](demo.png)
