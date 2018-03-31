@@ -5,3 +5,4 @@ You will see:
 - api call
 - principle of flutter framework 
 - flutter ui components and rules
+- programattically creation of components ( in this case cards )
