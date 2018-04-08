@@ -4,8 +4,7 @@ description: card with data fetched by http call
 dependencies:
   logging: "^0.11.3+1"
   http: ^0.11.3+16
-  sqflite: any
-  path_provider: any
+  url_launcher: "^3.0.0"
   flutter:
     sdk: flutter
   english_words: "^3.1.0"

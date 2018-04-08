@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
     return new MaterialApp(
       title: 'Flutter Demo',
       theme: new ThemeData(
-        primarySwatch: Colors.amber,
+        primarySwatch: Colors.cyan,
       ),
       home: new MyHomePage(title: 'Github card project with flutter'),
     );
@@ -73,7 +73,13 @@ class _MyHomePageState extends State<MyHomePage> {
   ///this function take a github project and extract important data ( need for create a GithubCard)
   ///
    GithubCard _extractDataFromJson(Map githubCard){
-    GithubCard card = new GithubCard(githubCard["name"], githubCard["owner"]["avatar_url"], githubCard["description"], githubCard["stargazers_count"], githubCard["open_issued_count"]);
+    GithubCard card = new GithubCard(
+        githubCard["name"],
+        githubCard["owner"]["avatar_url"],
+        githubCard["description"],
+        githubCard["stargazers_count"],
+        githubCard["open_issued_count"],
+        githubCard["html_url"]);
     return card;
   }
 

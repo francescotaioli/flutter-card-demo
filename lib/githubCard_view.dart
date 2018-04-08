@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'githubCard.dart';
+import 'package:url_launcher/url_launcher.dart';
+import 'dart:async';
 
 //this is the view part of the card
 class GithubCardItem extends StatelessWidget {
@@ -18,16 +20,20 @@ class GithubCardItem extends StatelessWidget {
     String avatarUrl = this._card.getAvatar();
     num star = this._card.getStar();
     num openIssueCount = this._card.getOpenIssue();
+    String url = this._card.getProjectURL();
 
+    //some project don't have descrition
+    if(description == null)
+      description = "The repo doesn't have a desciption";
     //check if the description is too long
     //in case wrap the string
-    if (description.length > 100)
+    else if (description.length > 100)
       description = description.substring(0, 100) + "...";
 
     return new Card(
 
       child: new InkWell(
-        onTap:  () =>  print("You selected " + this._card.getTitle()),
+        onTap:  () => _launchInBrowser(),
         child: new Column(
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
@@ -47,7 +53,7 @@ class GithubCardItem extends StatelessWidget {
           ),
 
           new Container(
-            padding: const EdgeInsets.only(left: 300.0),
+            padding: const EdgeInsets.only(left: 280.0,bottom: 30.0),
             child: new Column(
               children: <Widget>[
               new Row(
@@ -66,5 +72,14 @@ class GithubCardItem extends StatelessWidget {
       ),
       )
     );
+  }
+
+  ///redirect the browser to the project
+  Future<Null> _launchInBrowser() async {
+    if (await canLaunch(this._card.projectURL)) {
+      await launch(this._card.projectURL, forceSafariVC: false, forceWebView: false);
+    } else {
+      throw 'Could not launch $this._card.projectURL';
+    }
   }
 }
