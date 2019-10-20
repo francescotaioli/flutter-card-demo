@@ -6,19 +6,19 @@ import 'github_data_download.dart';
 
 
 void main() {
-  runApp(new MyApp());
+  runApp(MyApp());
 }
 
 
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return new MaterialApp(
+    return MaterialApp(
       title: 'Flutter Demo',
-      theme: new ThemeData(
+      theme: ThemeData(
         primarySwatch: Colors.cyan,
       ),
-      home: new MyHomePage(title: 'Github card project with flutter'),
+      home: MyHomePage(title: 'Github card project with flutter'),
     );
   }
 }
@@ -29,14 +29,14 @@ class MyHomePage extends StatefulWidget {
   final String title;
 
   @override
-  _MyHomePageState createState() => new _MyHomePageState();
+  _MyHomePageState createState() => _MyHomePageState();
 }
 
 
 class _MyHomePageState extends State<MyHomePage> {
   //when we add element to _items in the setState() method
   //the framework update the view
-  List<Widget> _items = new List<GithubCardItem>();
+  List<Widget> _items = List<GithubCardItem>();
 
   @override
   void initState() {
@@ -48,17 +48,17 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    final GlobalKey<ScaffoldState> scaffoldKey = new GlobalKey<ScaffoldState>();
-    return new Scaffold(
+    final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
+    return Scaffold(
       key : scaffoldKey,
-        appBar: new AppBar(title: new Text(widget.title)),
-        body: new ListView.builder(
+        appBar: AppBar(title: Text(widget.title)),
+        body: ListView.builder(
           itemBuilder: (BuildContext context, int index) => _items[index],
           itemExtent: 140.0,
           itemCount: _items.length,
         ),
         floatingActionButton: new FloatingActionButton(
-          child: new Icon(Icons.add),
+          child: Icon(Icons.add),
           onPressed: (){
             _downloadData();
           },
@@ -66,14 +66,11 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 
-
-
-
   ///
   ///this function take a github project and extract important data ( need for create a GithubCard)
   ///
    GithubCard _extractDataFromJson(Map githubCard){
-    GithubCard card = new GithubCard(
+    GithubCard card = GithubCard(
         githubCard["name"],
         githubCard["owner"]["avatar_url"],
         githubCard["description"],
@@ -93,7 +90,6 @@ class _MyHomePageState extends State<MyHomePage> {
             GithubCard card = _extractDataFromJson(githubCard);
             this._items.add(new GithubCardItem(card));
           });
-
         }
       }
     });
